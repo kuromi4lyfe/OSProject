@@ -5,8 +5,8 @@ Group Name: Lokching
 Section: 3 
 
 Team Mates:
-1. 
-2. 
+1. Nur Aliah Binti Khairul [  ]
+2. Nur Aleeya Binti Zulaini [ ]
 3. Nur Aisyah Ameera Binti Khairil [ 2211546 ]
 
 ## Rules

@@ -411,14 +411,26 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __In a Docker container, files are typically created by the 'codespace' user and belong to the 'root' group on the host virtual machine__.
+```bash
+@nrraleeya ➜ /workspaces/OSProject/myroot (main) $ ls -asl
+total 8
+4 drwxrwxrwx+ 2 codespace codespace 4096 Jun 28 17:34 .
+4 drwxrwxrwx+ 5 codespace root      4096 Jun 28 17:34 ..
+```
+
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
 
 ```
-*** __Fill answer here__.***
+```bash
+@nrraleeya ➜ /workspaces/OSProject/myroot (main) $ ls -l
+total 4
+drwxrwxrwx+ 2 codespace codespace 4096 Jun 29 15:44 myroot
+```
+*** __The output shows that all files and directories within myroot are owned by the codespace user and group__.***
 
 ## You are on your own, create your own static webpage
 
@@ -444,9 +456,11 @@ docker run --detach -v /workspaces/OSProject/webpage:/usr/local/apache2/htdocs/ 
 
 ***Questions:***
 
-1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Fill answer here__.
-2. What port is the apache web server running. ***(1 mark)*** __Fill answer here__.
-3. What port is open for http protocol on the host machine? ***(1 mark)*** __Fill answer here__.
+1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __1. Permissions of the folder: drwxr-xr-x
+User: root
+Group: root__.
+2. What port is the apache web server running. ***(1 mark)*** __Port: 80__.
+3. What port is open for http protocol on the host machine? ***(1 mark)*** __Port: 8080__.
 
 ## Create SUB Networks
 

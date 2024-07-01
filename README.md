@@ -524,8 +524,9 @@ docker exec c1 ping c2
 ```
 ***Questions:***
 
-1. Are you able to ping? Show your output . ***(1 mark)*** Yes, after creating the bridgenet network and connecting both containers (c1 and c2) to this network, the ping from c1 to c2 is successful. The output is as follows:
+1. Are you able to ping? Show your output . ***(1 mark)***
 ```bash
+Yes, after creating the bridgenet network and connecting both containers (c1 and c2) to this network, the ping from c1 to c2 is successful. The output is as follows:
 @aliahkhairul ➜ /workspaces/OSProject (main) $ docker exec c1 ping c2
 PING c2 (172.20.0.3): 56 data bytes
 64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.089 ms

@@ -492,11 +492,11 @@ using --name, you can specify a human-readable name for the container, which can
 ```bash
 @aliahkhairul ➜ /workspaces/OSProject (main) $ docker network ls
 NETWORK ID     NAME      DRIVER    SCOPE
-e7d8fdbd6d57   bluenet   bridge    local
-1bb39600d2a5   bridge    bridge    local
-85833c7baca9   host      host      local
-04c23f679397   none      null      local
-67cf0bec0f03   rednet    bridge    local
+80028591a6ca   bluenet   bridge    local
+0e204183a72b   bridge    bridge    local
+c4033942fb62   host      host      local
+69d91dd6acf2   none      null      local
+9fc7aaf3bf36   rednet    bridge    local
 ```
 3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
 ```bash
@@ -529,13 +529,26 @@ docker exec c1 ping c2
 Yes, after creating the bridgenet network and connecting both containers (c1 and c2) to this network, the ping from c1 to c2 is successful. The output is as follows:
 @aliahkhairul ➜ /workspaces/OSProject (main) $ docker exec c1 ping c2
 PING c2 (172.20.0.3): 56 data bytes
-64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.089 ms
-64 bytes from 172.20.0.3: seq=1 ttl=64 time=0.071 ms
-64 bytes from 172.20.0.3: seq=2 ttl=64 time=0.075 ms
-64 bytes from 172.20.0.3: seq=3 ttl=64 time=0.091 ms
-64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.093 ms
-64 bytes from 172.20.0.3: seq=5 ttl=64 time=0.060 ms
-64 bytes from 172.20.0.3: seq=6 ttl=64 time=0.051 ms
+64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.128 ms
+64 bytes from 172.20.0.3: seq=1 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=2 ttl=64 time=0.067 ms
+64 bytes from 172.20.0.3: seq=3 ttl=64 time=0.071 ms
+64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.092 ms
+64 bytes from 172.20.0.3: seq=5 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=6 ttl=64 time=0.106 ms
+64 bytes from 172.20.0.3: seq=7 ttl=64 time=0.087 ms
+64 bytes from 172.20.0.3: seq=8 ttl=64 time=0.084 ms
+64 bytes from 172.20.0.3: seq=9 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=10 ttl=64 time=0.085 ms
+64 bytes from 172.20.0.3: seq=11 ttl=64 time=0.084 ms
+64 bytes from 172.20.0.3: seq=12 ttl=64 time=0.096 ms
+64 bytes from 172.20.0.3: seq=13 ttl=64 time=0.068 ms
+64 bytes from 172.20.0.3: seq=14 ttl=64 time=0.076 ms
+64 bytes from 172.20.0.3: seq=15 ttl=64 time=0.079 ms
+64 bytes from 172.20.0.3: seq=16 ttl=64 time=0.107 ms
+64 bytes from 172.20.0.3: seq=17 ttl=64 time=0.083 ms
+64 bytes from 172.20.0.3: seq=18 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=19 ttl=64 time=0.073 ms
 ```
 2. What is different from the previous ping in the section above? ***(1 mark)***
 ```bash

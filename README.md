@@ -489,7 +489,8 @@ to assign a specific name to a container. By default, Docker assigns a random, u
 using --name, you can specify a human-readable name for the container, which can make managing and referencing containers easier.
 ```
 2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)***
-```bash @aliahkhairul ➜ /workspaces/OSProject (main) $ docker network ls
+```bash
+@aliahkhairul ➜ /workspaces/OSProject (main) $ docker network ls
 NETWORK ID     NAME      DRIVER    SCOPE
 e7d8fdbd6d57   bluenet   bridge    local
 1bb39600d2a5   bridge    bridge    local
@@ -497,15 +498,19 @@ e7d8fdbd6d57   bluenet   bridge    local
 04c23f679397   none      null      local
 67cf0bec0f03   rednet    bridge    local
 ```
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** ```bash bluenet gateway: 172.18.0.1
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
+```bash
+bluenet gateway: 172.18.0.1
 rednet gateway: 172.19.0.1
 ```
-4. What is the network address for the running container c1 and c2? ***(1 mark)*** c1
-```bash IP address: 172.18.0.2
+4. What is the network address for the running container c1 and c2? ***(1 mark)*** 
+```bash
+c1 IP address: 172.18.0.2
 c2 IP address: 172.19.0.2
 ```
 5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)***
-```bash c1 cannot ping c2 because they are on different isolated networks.
+```bash
+c1 cannot ping c2 because they are on different isolated networks.
 output : ping: bad address 'c2'
 ```
 
@@ -520,6 +525,7 @@ docker exec c1 ping c2
 ***Questions:***
 
 1. Are you able to ping? Show your output . ***(1 mark)*** Yes, after creating the bridgenet network and connecting both containers (c1 and c2) to this network, the ping from c1 to c2 is successful. The output is as follows:
+```bash
 @aliahkhairul ➜ /workspaces/OSProject (main) $ docker exec c1 ping c2
 PING c2 (172.20.0.3): 56 data bytes
 64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.089 ms
@@ -529,8 +535,12 @@ PING c2 (172.20.0.3): 56 data bytes
 64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.093 ms
 64 bytes from 172.20.0.3: seq=5 ttl=64 time=0.060 ms
 64 bytes from 172.20.0.3: seq=6 ttl=64 time=0.051 ms
-2. What is different from the previous ping in the section above? ***(1 mark)*** In the previous attempt, the ping command resulted in an error with the message "bad address 'c2' ", indicating that c1 was unable to resolve with c2. This failure occurred because c1 and c2 were on separate, isolated networks (bluenet and rednet), which do not allow inter-network communication by default.
+```
+2. What is different from the previous ping in the section above? ***(1 mark)***
+```bash
+In the previous attempt, the ping command resulted in an error with the message "bad address 'c2' ", indicating that c1 was unable to resolve with c2. This failure occurred because c1 and c2 were on separate, isolated networks (bluenet and rednet), which do not allow inter-network communication by default.
 After connecting both c1 and c2 to the bridgenet network, they now share a common network. This network bridge allows the containers to resolve each other's names and communicate successfully.
+```
 
 ## Intermediate Level (10 marks bonus)
 

@@ -481,23 +481,37 @@ docker run -itd --net rednet --name c2 busybox sh
 
 1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)***
 ```bash
-
+BusyBox is a software suite that provides several Unix utilities in a single executable file. It is often referred to
+as "The Swiss Army Knife of Embedded Linux" because it combines tiny versions of many common UNIX utilities into a single
+small executable, making it ideal for use in constrained environments, such as embedded systems. In the context of Docker,
+BusyBox is a popular base image for containers due to its small size and efficiency.The --name command switch in Docker is used
+to assign a specific name to a container. By default, Docker assigns a random, unique name to each container. However,
+using --name, you can specify a human-readable name for the container, which can make managing and referencing containers easier.
 ```
 2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)***
 ```bash
-
+@aliahkhairul ➜ /workspaces/OSProject (main) $ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+343fc83e72ce   bluenet   bridge    local
+5dcdc15d5e6d   bridge    bridge    local
+1a3c4c5c9292   host      host      local
+860255aa9aee   none      null      local
+91f75493655f   rednet    bridge    local
 ```
 3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
 ```bash
-
+bluenet gateway: 172.18.0.1
+rednet gateway: 172.19.0.1
 ```
 4. What is the network address for the running container c1 and c2? ***(1 mark)*** 
 ```bash
-
+c1 IP address: 172.18.0.2
+c2 IP address: 172.19.0.2
 ```
 5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)***
 ```bash
-
+c1 cannot ping c2 because they are on different isolated networks.
+output : ping: bad address 'c2'
 ```
 
 ## Bridging two SUB Networks
@@ -512,11 +526,49 @@ docker exec c1 ping c2
 
 1. Are you able to ping? Show your output . ***(1 mark)***
 ```bash
-
+Yes, after creating the bridgenet network and connecting both containers (c1 and c2) to this network, the ping from c1 to c2 is successful. The output is as follows:
+@aliahkhairul ➜ /workspaces/OSProject (main) $ docker exec c1 ping c2
+PING c2 (172.20.0.3): 56 data bytes
+64 bytes from 172.20.0.3: seq=0 ttl=64 time=0.165 ms
+64 bytes from 172.20.0.3: seq=1 ttl=64 time=0.072 ms
+64 bytes from 172.20.0.3: seq=2 ttl=64 time=0.086 ms
+64 bytes from 172.20.0.3: seq=3 ttl=64 time=0.089 ms
+64 bytes from 172.20.0.3: seq=4 ttl=64 time=0.112 ms
+64 bytes from 172.20.0.3: seq=5 ttl=64 time=0.081 ms
+64 bytes from 172.20.0.3: seq=6 ttl=64 time=0.070 ms
+64 bytes from 172.20.0.3: seq=7 ttl=64 time=0.091 ms
+64 bytes from 172.20.0.3: seq=8 ttl=64 time=0.098 ms
+64 bytes from 172.20.0.3: seq=9 ttl=64 time=0.077 ms
+64 bytes from 172.20.0.3: seq=10 ttl=64 time=0.083 ms
+64 bytes from 172.20.0.3: seq=11 ttl=64 time=0.068 ms
+64 bytes from 172.20.0.3: seq=12 ttl=64 time=0.107 ms
+64 bytes from 172.20.0.3: seq=13 ttl=64 time=0.072 ms
+64 bytes from 172.20.0.3: seq=14 ttl=64 time=0.097 ms
+64 bytes from 172.20.0.3: seq=15 ttl=64 time=0.066 ms
+64 bytes from 172.20.0.3: seq=16 ttl=64 time=0.068 ms
+64 bytes from 172.20.0.3: seq=17 ttl=64 time=0.073 ms
+64 bytes from 172.20.0.3: seq=18 ttl=64 time=0.070 ms
+64 bytes from 172.20.0.3: seq=19 ttl=64 time=0.085 ms
+64 bytes from 172.20.0.3: seq=20 ttl=64 time=0.092 ms
+64 bytes from 172.20.0.3: seq=21 ttl=64 time=0.082 ms
+64 bytes from 172.20.0.3: seq=22 ttl=64 time=0.094 ms
+64 bytes from 172.20.0.3: seq=23 ttl=64 time=0.085 ms
+64 bytes from 172.20.0.3: seq=24 ttl=64 time=0.091 ms
+64 bytes from 172.20.0.3: seq=25 ttl=64 time=0.073 ms
+64 bytes from 172.20.0.3: seq=26 ttl=64 time=0.081 ms
+64 bytes from 172.20.0.3: seq=27 ttl=64 time=0.058 ms
+64 bytes from 172.20.0.3: seq=28 ttl=64 time=0.104 ms
+64 bytes from 172.20.0.3: seq=29 ttl=64 time=0.085 ms
+64 bytes from 172.20.0.3: seq=30 ttl=64 time=0.083 ms
+64 bytes from 172.20.0.3: seq=31 ttl=64 time=0.075 ms
+64 bytes from 172.20.0.3: seq=32 ttl=64 time=0.093 ms
+64 bytes from 172.20.0.3: seq=33 ttl=64 time=0.080 ms
+64 bytes from 172.20.0.3: seq=34 ttl=64 time=0.114 
 ```
 2. What is different from the previous ping in the section above? ***(1 mark)***
 ```bash
-
+In the previous attempt, the ping command resulted in an error with the message "bad address 'c2' ", indicating that c1 was unable to resolve with c2. This failure occurred because c1 and c2 were on separate, isolated networks (bluenet and rednet), which do not allow inter-network communication by default.
+After connecting both c1 and c2 to the bridgenet network, they now share a common network. This network bridge allows the containers to resolve each other's names and communicate successfully
 ```
 
 ## Intermediate Level (10 marks bonus)

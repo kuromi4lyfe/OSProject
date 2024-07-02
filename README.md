@@ -687,10 +687,27 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
 
 ***Questions:***
 
-1. What is the output of step 5 above, explain the error? ***(1 mark)*** __Fill answer here__.
-2. Show the instruction needed to make this work. ***(1 mark)*** __Fill answer here__.
+1. What is the output of step 5 above, explain the error? ***(1 mark)*** 
+```bash
+@aliahkhairul ➜ /workspaces/OSProject/nodejs-app (main) $ curl http://localhost:3000/random
+Server Error
 
+Indicates that the Node.js application is unable to connect to the MySQL database or encounters an error when executing the
+query.This typically occurs due to misconfiguration of the MySQL connection settings in the Node.js application or
+network-related issues between the containers.
+```
+2. Show the instruction needed to make this work. ***(1 mark)*** 
+```bash
+1. Update the index.js file with
 
+app.get('/', (req, res) => {
+  res.send('Welcome to our Node.js and MySQL!');
+});
+
+2. run the application again --> docker build -t nodejs-app .
+3. run the new updated Node.js container -> docker run --name new-nodejs-container --network nodejsnet -p 3000:3000 -d nodejs-app
+4. test again.
+```
 
 ## What to submit
 

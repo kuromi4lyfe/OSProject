@@ -563,7 +563,6 @@ PING c2 (172.20.0.3): 56 data bytes
 64 bytes from 172.20.0.3: seq=31 ttl=64 time=0.075 ms
 64 bytes from 172.20.0.3: seq=32 ttl=64 time=0.093 ms
 64 bytes from 172.20.0.3: seq=33 ttl=64 time=0.080 ms
-64 bytes from 172.20.0.3: seq=34 ttl=64 time=0.114 
 ```
 2. What is different from the previous ping in the section above? ***(1 mark)***
 ```bash

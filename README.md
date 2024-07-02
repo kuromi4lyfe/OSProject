@@ -539,30 +539,6 @@ PING c2 (172.20.0.3): 56 data bytes
 64 bytes from 172.20.0.3: seq=7 ttl=64 time=0.091 ms
 64 bytes from 172.20.0.3: seq=8 ttl=64 time=0.098 ms
 64 bytes from 172.20.0.3: seq=9 ttl=64 time=0.077 ms
-64 bytes from 172.20.0.3: seq=10 ttl=64 time=0.083 ms
-64 bytes from 172.20.0.3: seq=11 ttl=64 time=0.068 ms
-64 bytes from 172.20.0.3: seq=12 ttl=64 time=0.107 ms
-64 bytes from 172.20.0.3: seq=13 ttl=64 time=0.072 ms
-64 bytes from 172.20.0.3: seq=14 ttl=64 time=0.097 ms
-64 bytes from 172.20.0.3: seq=15 ttl=64 time=0.066 ms
-64 bytes from 172.20.0.3: seq=16 ttl=64 time=0.068 ms
-64 bytes from 172.20.0.3: seq=17 ttl=64 time=0.073 ms
-64 bytes from 172.20.0.3: seq=18 ttl=64 time=0.070 ms
-64 bytes from 172.20.0.3: seq=19 ttl=64 time=0.085 ms
-64 bytes from 172.20.0.3: seq=20 ttl=64 time=0.092 ms
-64 bytes from 172.20.0.3: seq=21 ttl=64 time=0.082 ms
-64 bytes from 172.20.0.3: seq=22 ttl=64 time=0.094 ms
-64 bytes from 172.20.0.3: seq=23 ttl=64 time=0.085 ms
-64 bytes from 172.20.0.3: seq=24 ttl=64 time=0.091 ms
-64 bytes from 172.20.0.3: seq=25 ttl=64 time=0.073 ms
-64 bytes from 172.20.0.3: seq=26 ttl=64 time=0.081 ms
-64 bytes from 172.20.0.3: seq=27 ttl=64 time=0.058 ms
-64 bytes from 172.20.0.3: seq=28 ttl=64 time=0.104 ms
-64 bytes from 172.20.0.3: seq=29 ttl=64 time=0.085 ms
-64 bytes from 172.20.0.3: seq=30 ttl=64 time=0.083 ms
-64 bytes from 172.20.0.3: seq=31 ttl=64 time=0.075 ms
-64 bytes from 172.20.0.3: seq=32 ttl=64 time=0.093 ms
-64 bytes from 172.20.0.3: seq=33 ttl=64 time=0.080 ms
 ```
 2. What is different from the previous ping in the section above? ***(1 mark)***
 ```bash
